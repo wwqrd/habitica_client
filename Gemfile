@@ -1,9 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in habitrpg-api.gemspec
+# Specify your gem's dependencies in habitrpg.gemspec
 gemspec
-
-gem 'rspec'
-
-gem 'dotenv'
-gem 'httparty'

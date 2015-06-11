@@ -1,13 +1,13 @@
-# Habitrpg::Api
+# habit_client
 
-TODO: Write a gem description
+HabitRPG client
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'habitrpg-api'
+gem 'habit_client'
 ```
 
 And then execute:
@@ -16,28 +16,21 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install habitrpg-api
+    $ gem install habit_client
 
 ## Usage
 
-### Planned Usage:
-
 ```ruby
-habitrpg.user.stats  # User stats
-habitrpg.user.habits  # Return habits
-habitrpg.user.dailies  # Return dailies
-habitrpg.user.tasks  # Return task
-habitrpg.user.tasks(id).checklist(id).completed!  # Complete checklist item
-habitrpg.user.tasks(id).completed!  # Complete task
-habitrpg.user.habits(id).failed!  # Fail habit
-habitrpg.user.habits(id).completed!  # Complete habit
-habitrpg.user.dailies(id).completed!  # Complete daily
+require 'habit_client'
+
+habit = HabitClient.new(ENV['USER_ID'], ENV['API_TOKEN'])
+
+# User stats
+habit.user.stats.hp
+# 50
+
+# Get tasks
+habit.user.tasks.each dp |task|
+  puts task.text
+end
 ```
-
-## Contributing
-
-1. Fork it ( https://github.com/[my-github-username]/habitrpg-api/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request

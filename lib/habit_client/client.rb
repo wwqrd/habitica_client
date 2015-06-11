@@ -1,7 +1,7 @@
 require 'httparty'
 require 'json'
 
-class HabitRPG
+class HabitClient
   class Client
 
     include HTTParty
@@ -12,13 +12,12 @@ class HabitRPG
       @user_id = user_id
       @api_token = api_token
 
-      headers({
+      self.class.headers({
         'User-Agent' => 'habitapi-rpg',
         'Content-Type'  => 'application/json',
         'x-api-key' => @api_token,
         'x-api-user' => @user_id
       })
-
     end
 
   end
