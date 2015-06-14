@@ -6,7 +6,7 @@ class HabitClient::User::Tasks
       by_type('habit', &block)
     end
 
-    def dailys(&block)
+    def dailies(&block)
       by_type('daily', &block)
     end
 

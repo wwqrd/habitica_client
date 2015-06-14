@@ -36,10 +36,10 @@ describe 'Tasks', :vcr do
 
   end
 
-  describe '.dailys' do
+  describe '.dailies' do
 
-    it 'returns all the dailys' do
-      tasks.dailys.each do |task|
+    it 'returns all the dailies' do
+      tasks.dailies.each do |task|
         expect(task.daily?).to be(true)
       end
     end
