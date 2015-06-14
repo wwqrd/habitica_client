@@ -1,6 +1,6 @@
 # habit_client
 
-HabitRPG client
+A HabitRPG client gem
 
 ## Installation
 
@@ -30,7 +30,7 @@ habit.user.stats.hp
 # 50
 
 # Get tasks
-habit.user.tasks.each dp |task|
+habit.user.tasks.each do |task|
   puts task.text
 end
 ```
