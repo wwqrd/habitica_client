@@ -19,7 +19,7 @@ describe 'Tasks', :vcr do
   describe '.habits' do
 
     it 'returns all the habits' do
-      tasks.habits do |task|
+      tasks.habits.each do |task|
         expect(task.habit?).to be(true)
       end
     end
@@ -29,7 +29,7 @@ describe 'Tasks', :vcr do
   describe '.todos' do
 
     it 'returns all the todos' do
-      tasks.todos do |task|
+      tasks.todos.each do |task|
         expect(task.todo?).to be(true)
       end
     end
@@ -39,7 +39,7 @@ describe 'Tasks', :vcr do
   describe '.dailys' do
 
     it 'returns all the dailys' do
-      tasks.dailys do |task|
+      tasks.dailys.each do |task|
         expect(task.daily?).to be(true)
       end
     end

@@ -15,10 +15,7 @@ class HabitClient::User::Tasks
     end
 
     def by_type(type, &block)
-      tasks = self.select { |task| task.type?(type) }
-      tasks.each do |task|
-        block.call task
-      end
+      self.select { |task| task.type?(type) }
     end
 
   end

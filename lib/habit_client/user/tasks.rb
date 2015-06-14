@@ -18,9 +18,13 @@ class HabitClient::User
     end
 
     def each(&block)
-      client.class.get("/user/tasks").each do |t|
+      tasks.each do |t|
         block.call Task.new(self, t)
       end
+    end
+
+    def tasks
+      @tasks ||= client.class.get("/user/tasks")
     end
 
     def client
