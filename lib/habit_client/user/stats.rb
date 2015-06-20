@@ -18,6 +18,10 @@ class HabitClient::User
       stats.has_key?(m.to_s)
     end
 
+    def player_class
+      stats['class']
+    end
+
     def stats
       @stats ||= client.class.get("/user")['stats']
     end

@@ -10,7 +10,7 @@ describe 'Stats', :vcr do
     [:per, :int, :con, :str, :points, :lvl,
     :gp, :exp, :mp, :hp, :toNextLevel, :maxHealth, :maxMP]
   }
-  let(:text_stats) { [:class] }
+  let(:text_stats) { [:player_class] }
   let(:fake_stat) { :foobar }
 
   it 'has object stats' do
@@ -27,6 +27,7 @@ describe 'Stats', :vcr do
 
   it 'has text stats' do
     text_stats.each do |stat|
+      puts stats.send(stat)
       expect(stats.send(stat)).not_to be_nil
     end
   end
