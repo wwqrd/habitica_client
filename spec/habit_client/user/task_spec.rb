@@ -1,16 +1,12 @@
 require 'spec_helper'
 
+properties = [:id, :text, :notes, :value, :checklist]
+
 describe 'Task', :vcr do
 
   let(:habitrpg) { HabitClient.new(USER_ID, API_TOKEN) }
 
-  let(:task) { habitrpg.user.tasks.first }
-
-  describe '#id' do
-    it 'is the task id' do
-      expect(task.id).to be_a(String)
-    end
-  end
+  let(:task) { habitrpg.user.tasks.todos.first }
 
   describe '#completed?' do
     it 'is the completed status' do
@@ -18,15 +14,13 @@ describe 'Task', :vcr do
     end
   end
 
-  describe '#text' do
-    it 'is the task description' do
-      expect(task.text).to be_a(String)
-    end
-  end
-
-  describe '#notes' do
-    it 'is the task notes' do
-      expect(task.notes).to be_a(String)
+  describe 'Task properties' do
+    properties.each do |property|
+      describe "##{property}" do
+        it 'is not nil' do
+          expect(task.send(property)).to_not be_nil
+        end
+      end
     end
   end
 

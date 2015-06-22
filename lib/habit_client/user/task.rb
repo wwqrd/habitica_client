@@ -1,3 +1,6 @@
+require 'ostruct'
+require 'forwardable'
+
 class HabitClient::User
 
   class Task
@@ -8,21 +11,13 @@ class HabitClient::User
     include Status
     include Type
 
+    extend Forwardable
+
+    def_delegators :task, :id, :text, :notes, :checklist, :value
+
     def initialize(tasks, task)
       @tasks = tasks
-      @task = task
-    end
-
-    def id
-      task['id']
-    end
-
-    def text
-      task['text']
-    end
-
-    def notes
-      task['notes']
+      @task = OpenStruct.new task
     end
 
     def client
