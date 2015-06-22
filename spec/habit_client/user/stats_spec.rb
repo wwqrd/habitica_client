@@ -27,7 +27,6 @@ describe 'Stats', :vcr do
 
   it 'has text stats' do
     text_stats.each do |stat|
-      puts stats.send(stat)
       expect(stats.send(stat)).not_to be_nil
     end
   end
