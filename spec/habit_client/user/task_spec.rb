@@ -1,12 +1,15 @@
 require 'spec_helper'
 
-properties = [:id, :text, :notes, :value, :checklist]
+properties = [:id, :text, :notes, :value, :checklist, :priority,
+              :attribute, :tags]
+
+date_properties = [:date_completed, :date_created]
 
 describe 'Task', :vcr do
 
   let(:habitrpg) { HabitClient.new(USER_ID, API_TOKEN) }
 
-  let(:task) { habitrpg.user.tasks.todos.first }
+  let(:task) { habitrpg.user.tasks.todos.last }
 
   describe '#completed?' do
     it 'is the completed status' do
@@ -15,10 +18,18 @@ describe 'Task', :vcr do
   end
 
   describe 'Task properties' do
+
     properties.each do |property|
       describe "##{property}" do
         it 'is not nil' do
-          expect(task.send(property)).to_not be_nil
+          expect(task).to respond_to(property)
+        end
+      end
+    end
+    date_properties.each do |property|
+      describe "##{property}" do
+        it 'is a DateTime' do
+          expect(task.send(property)).to be_a(DateTime)
         end
       end
     end
