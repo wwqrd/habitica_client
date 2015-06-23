@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 describe 'Tasks' do
 
   tasks = nil

@@ -6,8 +6,8 @@ class HabitClient::User
 
   class Task
 
-    require "habit_client/user/task/status"
-    require "habit_client/user/task/type"
+    require 'habit_client/user/task/status'
+    require 'habit_client/user/task/type'
 
     include Status
     include Type
@@ -45,7 +45,6 @@ class HabitClient::User
       def task
         @task
       end
-
 
   end
 

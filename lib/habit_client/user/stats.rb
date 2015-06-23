@@ -19,15 +19,17 @@ class HabitClient::User
     end
 
     def stats
-      @stats ||= OpenStruct.new(
-        client.class.get("/user")['stats'].tap do |stats|
-          stats['player_class'] = stats['class']
-        end
-      )
+      @stats ||= OpenStruct.new(Stats.parse(client.class.get('/user')['stats']))
     end
 
     def client
       @user.client
+    end
+
+    def self.parse(stats)
+      stats.tap do |s|
+        s['player_class'] = s['class']
+      end
     end
 
   end

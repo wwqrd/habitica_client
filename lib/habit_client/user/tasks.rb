@@ -2,8 +2,8 @@ class HabitClient::User
 
   class Tasks
 
-    require "habit_client/user/tasks/types"
-    require "habit_client/user/tasks/status"
+    require 'habit_client/user/tasks/types'
+    require 'habit_client/user/tasks/status'
 
     include Enumerable
     include Types
@@ -24,7 +24,7 @@ class HabitClient::User
     end
 
     def tasks
-      @tasks ||= client.class.get("/user/tasks")
+      @tasks ||= client.class.get('/user/tasks')
     end
 
     def client
