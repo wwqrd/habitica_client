@@ -1,10 +1,16 @@
 require 'spec_helper'
 
-describe 'Stats', :vcr do
+describe 'Stats' do
 
-  let(:habitrpg) { HabitClient.new(USER_ID, API_TOKEN) }
+  stats = nil
 
-  let(:stats) { habitrpg.user.stats }
+  VCR.use_cassette :stats do
+    habitrpg = HabitClient.new(USER_ID, API_TOKEN)
+    stats = habitrpg.user.stats
+    # This is bad, we shouldn't know the internal workings of a class
+    stats.stats
+  end
+
   let(:object_stats) { [:training, :buffs] }
   let(:numeric_stats) {
     [:per, :int, :con, :str, :points, :lvl,
@@ -34,7 +40,7 @@ describe 'Stats', :vcr do
   it "doesn't have stats" do
     expect {
       stats.send(fake_stat)
-    }.to raise_error
+    }.to raise_error(NoMethodError)
   end
 
 end

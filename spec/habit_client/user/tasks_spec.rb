@@ -1,10 +1,16 @@
 require 'spec_helper'
 
-describe 'Tasks', :vcr do
 
-  let(:habitrpg) { HabitClient.new(USER_ID, API_TOKEN) }
+describe 'Tasks' do
 
-  let(:tasks) { habitrpg.user.tasks }
+  tasks = nil
+
+  VCR.use_cassette :tasks do
+    habitrpg = HabitClient.new(USER_ID, API_TOKEN)
+    tasks = habitrpg.user.tasks
+    # This is bad, we shouldn't know the internal workings of the class
+    tasks.tasks
+  end
 
   describe '.each' do
 

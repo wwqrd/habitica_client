@@ -5,15 +5,23 @@ properties = [:id, :text, :notes, :value, :checklist, :priority,
 
 date_properties = [:date_completed, :date_created]
 
-describe 'Task', :vcr do
+describe 'Task' do
 
-  let(:habitrpg) { HabitClient.new(USER_ID, API_TOKEN) }
+  todo = nil
+  habit = nil
+  daily = nil
 
-  let(:task) { habitrpg.user.tasks.todos.last }
+  VCR.use_cassette :task do
+    habitrpg = HabitClient.new(USER_ID, API_TOKEN)
+    tasks = habitrpg.user.tasks
+    todo = tasks.todos.last
+    habit =  tasks.habits.last
+    daily = tasks.dailies.last
+  end
 
   describe '#completed?' do
     it 'is the completed status' do
-      expect(task).to respond_to(:completed?)
+      expect(todo).to respond_to(:completed?)
     end
   end
 
@@ -22,34 +30,43 @@ describe 'Task', :vcr do
     properties.each do |property|
       describe "##{property}" do
         it 'is not nil' do
-          expect(task).to respond_to(property)
+          expect(todo).to respond_to(property)
         end
       end
     end
     date_properties.each do |property|
       describe "##{property}" do
         it 'is a DateTime' do
-          expect(task.send(property)).to be_a(DateTime)
+          expect(todo.send(property)).to be_a(DateTime)
         end
       end
     end
   end
 
-  describe '#habit?' do
-    it 'is a habit type task' do
-      expect(task).to respond_to(:habit?)
+  context 'is a habit' do
+    describe '#habit?' do
+      it 'is true' do
+        expect(habit.habit?).to eq(true)
+        expect(habit.daily?).to eq(false)
+      end
     end
   end
 
-  describe '#daily?' do
-    it 'is a daily type task' do
-      expect(task).to respond_to(:daily?)
+  context 'is a daily' do
+    describe '#daily?' do
+        it 'is true' do
+        expect(daily.daily?).to eq(true)
+        expect(daily.todo?).to eq(false)
+      end
     end
   end
 
-  describe '#todo?' do
-    it 'is a todo type task' do
-      expect(task).to respond_to(:todo?)
+  context 'is a todo' do
+    describe '#todo?' do
+        it 'is true' do
+        expect(todo.todo?).to eq(true)
+        expect(todo.habit?).to eq(false)
+      end
     end
   end
 
