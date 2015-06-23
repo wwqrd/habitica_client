@@ -20,11 +20,24 @@ class HabitClient::User
 
     def initialize(tasks, task)
       @tasks = tasks
-      @task = OpenStruct.new(parse(task))
+      @task = OpenStruct.new(Task.parse(task))
     end
 
     def client
       @tasks.client
+    end
+
+    def self.parse(task)
+      task.tap do |t|
+        if(t.has_key?('dateCompleted'))
+          t['date_completed'] = DateTime.parse(t['dateCompleted'])
+          t.delete('dateCompleted')
+        end
+        if(t.has_key?('dateCreated'))
+          t['date_created'] = DateTime.parse(t['dateCreated'])
+          t.delete('dateCreated')
+        end
+      end
     end
 
     private
@@ -33,18 +46,6 @@ class HabitClient::User
         @task
       end
 
-      def parse(task)
-        task.tap do |t|
-          if(t.has_key?('dateCompleted'))
-            t['date_completed'] = DateTime.parse(t['dateCompleted'])
-            t.delete('dateCompleted')
-          end
-          if(t.has_key?('dateCreated'))
-            t['date_created'] = DateTime.parse(t['dateCreated'])
-            t.delete('dateCreated')
-          end
-        end
-      end
 
   end
 

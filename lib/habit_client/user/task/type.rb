@@ -15,7 +15,7 @@ class HabitClient::User::Task
     end
 
     def type?(type)
-      task['type'] == type
+      task.type == type
     end
 
   end
