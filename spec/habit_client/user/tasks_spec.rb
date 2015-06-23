@@ -55,7 +55,7 @@ describe 'Tasks' do
   describe '.completed' do
 
     it 'returns all the completed tasks' do
-      tasks.completed do |task|
+      tasks.completed.each do |task|
         expect(task.completed?).to be(true)
       end
     end
@@ -65,7 +65,7 @@ describe 'Tasks' do
   describe '.uncompleted' do
 
     it 'returns all the uncompleted tasks' do
-      tasks.uncompleted do |task|
+      tasks.uncompleted.each do |task|
         expect(task.completed?).to be(false)
       end
     end
