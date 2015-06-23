@@ -1,0 +1,4 @@
+language: ruby
+script: rake
+before_install:
+  rvm @global do gem uninstall bundler -ax && gem install bundler --version '~> 1.10.4'
