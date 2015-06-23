@@ -38,9 +38,7 @@ describe 'Stats' do
   end
 
   it "doesn't have stats" do
-    expect {
-      stats.send(fake_stat)
-    }.to raise_error(NoMethodError)
+    expect { stats.send(fake_stat) }.to raise_error(NoMethodError)
   end
 
 end
