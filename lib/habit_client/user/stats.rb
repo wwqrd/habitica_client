@@ -8,8 +8,11 @@ class HabitClient::User
     extend Forwardable
 
     def_delegators :stats, :training, :buffs, :per, :int, :con, :str,
-                   :points, :lvl, :gp, :exp, :mp, :hp, :toNextLevel,
-                   :maxHealth, :maxMP, :player_class
+                   :points, :lvl, :gp, :exp, :mp, :hp, :player_class
+
+    def_delegator :stats, :toNextLevel, :to_next_level
+    def_delegator :stats, :maxHealth, :max_health
+    def_delegator :stats, :maxMP, :max_mp
 
     def initialize(user)
       @user = user
