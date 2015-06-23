@@ -1,8 +1,15 @@
-# habit_client
+habit_client
+============
 
 A HabitRPG client gem
 
-## Installation
+#### Status
+
+[![Build Status](https://travis-ci.org/steeeve/habit_client.svg?branch=master)](https://travis-ci.org/steeeve/habit_client)
+[![Code Climate](https://codeclimate.com/github/steeeve/habit_client/badges/gpa.svg)](https://codeclimate.com/github/steeeve/habit_client)
+
+Installation
+------------
 
 Add this line to your application's Gemfile:
 
@@ -18,7 +25,8 @@ Or install it yourself as:
 
     $ gem install habit_client
 
-## Usage
+Usage
+-----
 
 ```ruby
 require 'habit_client'
