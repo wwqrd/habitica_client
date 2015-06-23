@@ -1,12 +1,7 @@
-habit_client
+habit_client [![Build Status](https://travis-ci.org/steeeve/habit_client.svg?branch=master)](https://travis-ci.org/steeeve/habit_client) [![Code Climate](https://codeclimate.com/github/steeeve/habit_client/badges/gpa.svg)](https://codeclimate.com/github/steeeve/habit_client)
 ============
 
 A HabitRPG client gem
-
-#### Status
-
-[![Build Status](https://travis-ci.org/steeeve/habit_client.svg?branch=master)](https://travis-ci.org/steeeve/habit_client)
-[![Code Climate](https://codeclimate.com/github/steeeve/habit_client/badges/gpa.svg)](https://codeclimate.com/github/steeeve/habit_client)
 
 Installation
 ------------
@@ -40,5 +35,60 @@ habit.user.stats.hp
 # Get tasks
 habit.user.tasks.each do |task|
   puts task.text
+end
+```
+
+### Stats
+```ruby
+stats = habit_client.user.stats
+
+puts stats.training
+puts stats.buffs
+puts stats.per
+puts stats.int
+puts stats.con
+puts stats.str
+puts stats.points
+puts stats.lvl
+puts stats.gp
+puts stats.exp
+puts stats.mp
+puts stats.hp
+puts stats.to_next_level
+puts stats.max_health
+puts stats.max_mp
+puts stats.player_class
+```
+
+### Task
+```ruby
+stats = habit_client.user.tasks
+
+tasks.each do |task|
+    puts task.daily?
+    puts task.todo?
+    puts task.habit?
+    puts task..id
+    puts task.text
+    puts task.notes
+    puts task.value
+    puts task.priority
+    puts task.attribute
+    puts task.tags
+end
+
+tasks.habits.each do |habit|
+    ...
+end
+
+tasks.dailies.each do |habit|
+    ...
+end
+
+tasks.todos.each do |completed|
+    puts todo.completed?
+    puts task.checklist
+    puts task.date_created
+    puts todo.date_completed
 end
 ```
