@@ -29,11 +29,11 @@ class HabitClient::User
 
     def self.parse(task)
       task.tap do |t|
-        if(t.has_key?('dateCompleted'))
+        if t.key?('dateCompleted')
           t['date_completed'] = DateTime.parse(t['dateCompleted'])
           t.delete('dateCompleted')
         end
-        if(t.has_key?('dateCreated'))
+        if t.key?('dateCreated')
           t['date_created'] = DateTime.parse(t['dateCreated'])
           t.delete('dateCreated')
         end
@@ -42,9 +42,7 @@ class HabitClient::User
 
     private
 
-      def task
-        @task
-      end
+    attr_reader :task
 
   end
 

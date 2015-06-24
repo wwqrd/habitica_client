@@ -9,12 +9,10 @@ class HabitClient::User
     include Types
     include Status
 
+    attr_reader :user
+
     def initialize(user)
       @user = user
-    end
-
-    def user
-      @user
     end
 
     def each(&block)
@@ -30,6 +28,7 @@ class HabitClient::User
     def client
       user.client
     end
+
   end
 
 end

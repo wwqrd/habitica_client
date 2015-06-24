@@ -2,12 +2,12 @@ class HabitClient::User::Tasks
 
   module Status
 
-    def completed(&block)
-      self.select { |task| task.completed? }
+    def completed
+      select(&:completed?)
     end
 
-    def uncompleted(&block)
-      self.select { |task| !task.completed? }
+    def uncompleted
+      select { |task| !task.completed? }
     end
 
   end

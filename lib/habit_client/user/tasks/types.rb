@@ -2,20 +2,20 @@ class HabitClient::User::Tasks
 
   module Types
 
-    def habits(&block)
-      by_type('habit', &block)
+    def habits
+      by_type('habit')
     end
 
-    def dailies(&block)
-      by_type('daily', &block)
+    def dailies
+      by_type('daily')
     end
 
-    def todos(&block)
-      by_type('todo', &block)
+    def todos
+      by_type('todo')
     end
 
-    def by_type(type, &block)
-      self.select { |task| task.type?(type) }
+    def by_type(type)
+      select { |task| task.type?(type) }
     end
 
   end

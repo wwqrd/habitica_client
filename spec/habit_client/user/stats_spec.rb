@@ -13,8 +13,8 @@ describe 'Stats' do
 
   let(:object_stats) { [:training, :buffs] }
   let(:numeric_stats) do
-    [:per, :int, :con, :str, :points, :lvl,
-    :gp, :exp, :mp, :hp, :to_next_level, :max_health, :max_mp]
+    [:per, :int, :con, :str, :points, :lvl, :gp, :exp, :mp, :hp,
+     :to_next_level, :max_health, :max_mp]
   end
   let(:text_stats) { [:player_class] }
   let(:fake_stat) { :foobar }

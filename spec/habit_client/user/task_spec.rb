@@ -54,7 +54,7 @@ describe 'Task' do
 
   context 'is a daily' do
     describe '#daily?' do
-        it 'is true' do
+      it 'is true' do
         expect(daily.daily?).to eq(true)
         expect(daily.todo?).to eq(false)
       end
@@ -63,7 +63,7 @@ describe 'Task' do
 
   context 'is a todo' do
     describe '#todo?' do
-        it 'is true' do
+      it 'is true' do
         expect(todo.todo?).to eq(true)
         expect(todo.habit?).to eq(false)
       end
