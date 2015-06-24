@@ -1,7 +1,9 @@
 habit_client [![Build Status](https://travis-ci.org/steeeve/habit_client.svg?branch=master)](https://travis-ci.org/steeeve/habit_client) [![Code Climate](https://codeclimate.com/github/steeeve/habit_client/badges/gpa.svg)](https://codeclimate.com/github/steeeve/habit_client)
 ============
 
-A HabitRPG client gem
+A HabitRPG client gem.
+
+Presently read-only, plan to add write functionality in future.
 
 Installation
 ------------
