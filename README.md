@@ -3,8 +3,6 @@ habit_client [![Build Status](https://travis-ci.org/steeeve/habit_client.svg?bra
 
 A HabitRPG client gem.
 
-Presently read-only, plan to add write functionality in future.
-
 Installation
 ------------
 
@@ -38,6 +36,16 @@ habit.user.stats.hp
 habit.user.tasks.each do |task|
   puts task.text
 end
+
+# Create task
+task = habit.user.tasks.create({
+  text: 'Do the dishes',
+  type: 'todo'
+})
+
+# Update task (from previous)
+task.notes = 'Make sure to clean the drip pan'
+task.save
 ```
 
 ### Stats
@@ -70,7 +78,7 @@ tasks.each do |task|
     puts task.daily?
     puts task.todo?
     puts task.habit?
-    puts task..id
+    puts task.id
     puts task.text
     puts task.notes
     puts task.value
