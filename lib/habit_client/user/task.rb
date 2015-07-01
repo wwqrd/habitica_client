@@ -34,13 +34,13 @@ class HabitClient::User
     end
 
     def to_h
-      attributes = [:id, :text, :notes, :value, :priority, :attribute,
+      properties = [:id, :text, :notes, :value, :priority, :attribute,
                     :type, :tags, :checklist, :value, :priority,
                     :challenge, :down, :up, :history, :streak,
                     :frequency, :history, :completed, :every_x,
                     :repeat, :collapse_checklist]
 
-      kv = attributes.map { |k| [k, send("#{k}")] }
+      kv = properties.map { |k| [k, send("#{k}")] }
            .delete_if { |_k, v| v.nil? }
 
       Hash[kv]
