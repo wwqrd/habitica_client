@@ -24,5 +24,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'vcr', '~> 2.9'
   spec.add_development_dependency 'pry', '~> 0.10'
   spec.add_development_dependency 'rubocop', '~> 0.32'
+  spec.add_development_dependency 'byebug', '~> 5.0'
   spec.add_runtime_dependency 'httparty', '~> 0.13'
 end

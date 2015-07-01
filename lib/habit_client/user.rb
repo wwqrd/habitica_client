@@ -1,24 +1,19 @@
 class HabitClient
-  class User
+
+  require 'habit_client/api_base'
+
+  class User < HabitClient::ApiBase
 
     require 'habit_client/user/stats'
     require 'habit_client/user/tasks'
     require 'habit_client/user/task'
 
-    def initialize(habitrpg)
-      @habitrpg = habitrpg
-    end
-
     def stats
-      @stats ||= Stats.new(self)
+      @stats ||= Stats.new(client)
     end
 
     def tasks
-      @tasks ||= Tasks.new(self)
-    end
-
-    def client
-      @habitrpg.client
+      @tasks ||= Tasks.new(client)
     end
 
   end

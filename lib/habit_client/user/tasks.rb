@@ -1,6 +1,6 @@
 class HabitClient::User
 
-  class Tasks
+  class Tasks < HabitClient::ApiBase
 
     require 'habit_client/user/tasks/types'
     require 'habit_client/user/tasks/status'
@@ -9,15 +9,9 @@ class HabitClient::User
     include Types
     include Status
 
-    attr_reader :user
-
-    def initialize(user)
-      @user = user
-    end
-
     def each(&block)
-      tasks.each do |t|
-        block.call Task.new(self, t)
+      tasks.each do |task|
+        block.call Task.parse(client, task)
       end
     end
 
@@ -25,8 +19,8 @@ class HabitClient::User
       @tasks ||= client.class.get('/user/tasks')
     end
 
-    def client
-      user.client
+    def create(attributes = {})
+      Task.new(client, attributes).save
     end
 
   end

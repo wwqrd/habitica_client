@@ -3,7 +3,9 @@ require 'forwardable'
 
 class HabitClient::User
 
-  class Stats
+  require 'habit_client/api_base'
+
+  class Stats < HabitClient::ApiBase
 
     extend Forwardable
 
@@ -14,16 +16,8 @@ class HabitClient::User
     def_delegator :stats, :maxHealth, :max_health
     def_delegator :stats, :maxMP, :max_mp
 
-    def initialize(user)
-      @user = user
-    end
-
     def stats
       @stats ||= OpenStruct.new(Stats.parse(client.class.get('/user')['stats']))
-    end
-
-    def client
-      @user.client
     end
 
     def self.parse(stats)

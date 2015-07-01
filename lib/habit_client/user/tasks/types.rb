@@ -15,7 +15,7 @@ class HabitClient::User::Tasks
     end
 
     def by_type(type)
-      select { |task| task.type?(type) }
+      select { |task| task.type == type }
     end
 
   end

@@ -5,19 +5,13 @@ properties = [:id, :text, :notes, :value, :checklist, :priority,
 
 date_properties = [:date_completed, :date_created]
 
-describe 'Task' do
+describe 'Task', vcr: { cassette_name: 'task' } do
 
-  todo = nil
-  habit = nil
-  daily = nil
-
-  VCR.use_cassette :task do
-    habitrpg = HabitClient.new(USER_ID, API_TOKEN)
-    tasks = habitrpg.user.tasks
-    todo = tasks.todos.last
-    habit =  tasks.habits.last
-    daily = tasks.dailies.last
-  end
+  let(:habitrpg) { HabitClient.new(USER_ID, API_TOKEN) }
+  let(:tasks) { habitrpg.user.tasks }
+  let(:todo) { tasks.todos.last }
+  let(:habit) { tasks.habits.last }
+  let(:daily) { tasks.dailies.last }
 
   describe '#completed?' do
     it 'is the completed status' do
@@ -68,6 +62,28 @@ describe 'Task' do
         expect(todo.habit?).to eq(false)
       end
     end
+  end
+
+  context 'Writing to tasks', vcr: { cassette_name: 'write_task' } do
+
+    describe '#save' do
+
+      let(:original_text) { 'Testing 123' }
+      let(:updated_text) { 'Testing 456' }
+      let(:task) { tasks.create(text: original_text, type: 'todo') }
+
+      it 'can update an existing task' do
+
+        expect(task.text).to eq(original_text)
+
+        task.text = 'Testing 456'
+        task.save
+
+        expect(task.text).to eq(updated_text)
+      end
+
+    end
+
   end
 
 end

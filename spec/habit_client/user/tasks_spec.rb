@@ -71,4 +71,17 @@ describe 'Tasks' do
 
   end
 
+  context 'Creating tasks', vcr: { cassette_name: 'create_task' } do
+
+    describe '#create' do
+
+      it 'can create a new task' do
+        task = tasks.create(text: 'Testing 123', type: 'todo')
+        expect(task.id).not_to be_nil
+      end
+
+    end
+
+  end
+
 end

@@ -4,45 +4,47 @@ require 'time'
 
 class HabitClient::User
 
-  class Task
+  require 'habit_client/restful'
 
+  class Task < HabitClient::Restful
+
+    require 'habit_client/user/task/date_accessor'
     require 'habit_client/user/task/status'
     require 'habit_client/user/task/type'
 
+    extend DateAccessor
     include Status
     include Type
 
-    extend Forwardable
+    attr_accessor :id, :text, :notes, :value, :priority, :attribute,
+                  :type, :tags
 
-    def_delegators :task, :id, :text, :notes, :checklist, :value,
-                   :priority, :attribute, :tags, :date_created,
-                   :date_completed
+    attr_accessor :checklist, :value, :priority, :challenge, :down,
+                  :up, :history, :streak, :frequency, :history,
+                  :completed, :every_x, :repeat, :collapse_checklist
 
-    def initialize(tasks, task)
-      @tasks = tasks
-      @task = OpenStruct.new(Task.parse(task))
+    date_accessor :date_created, :date_completed, :start_date, :date
+
+    def endpoint
+      '/user/tasks'
     end
 
-    def client
-      @tasks.client
+    def to_json
+      to_h.to_json
     end
 
-    def self.parse(task)
-      task.tap do |t|
-        if t.key?('dateCompleted')
-          t['date_completed'] = DateTime.parse(t['dateCompleted'])
-          t.delete('dateCompleted')
-        end
-        if t.key?('dateCreated')
-          t['date_created'] = DateTime.parse(t['dateCreated'])
-          t.delete('dateCreated')
-        end
-      end
+    def to_h
+      attributes = [:id, :text, :notes, :value, :priority, :attribute,
+                    :type, :tags, :checklist, :value, :priority,
+                    :challenge, :down, :up, :history, :streak,
+                    :frequency, :history, :completed, :every_x,
+                    :repeat, :collapse_checklist]
+
+      kv = attributes.map { |k| [k, send("#{k}")] }
+           .delete_if { |_k, v| v.nil? }
+
+      Hash[kv]
     end
-
-    private
-
-    attr_reader :task
 
   end
 

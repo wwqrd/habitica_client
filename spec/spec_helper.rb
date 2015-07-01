@@ -1,5 +1,6 @@
 require_relative '../lib/habit_client'
 
+require 'byebug'
 require 'vcr'
 require 'dotenv'
 

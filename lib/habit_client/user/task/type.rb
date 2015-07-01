@@ -3,19 +3,15 @@ class HabitClient::User::Task
   module Type
 
     def habit?
-      type?('habit')
+      type == 'habit'
     end
 
     def daily?
-      type?('daily')
+      type == 'daily'
     end
 
     def todo?
-      type?('todo')
-    end
-
-    def type?(type)
-      task.type == type
+      type == 'todo'
     end
 
   end
