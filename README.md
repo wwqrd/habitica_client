@@ -38,10 +38,10 @@ habit.user.tasks.each do |task|
 end
 
 # Create task
-task = habit.user.tasks.create({
+task = habit.user.tasks.create(
   text: 'Do the dishes',
   type: 'todo'
-})
+)
 
 # Update task (from previous)
 task.notes = 'Make sure to clean the drip pan'
