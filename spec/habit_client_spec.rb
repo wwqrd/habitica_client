@@ -6,14 +6,14 @@ describe 'HabitClient' do
 
   it 'can be initialized' do
 
-    expect(habitrpg).to be_a(HabitRPG)
+    expect(habitrpg).to be_a(HabitClient)
 
   end
 
   describe '#user' do
 
     it 'returns a user' do
-      expect(habitrpg.user).to be_a(HabitRPG::User)
+      expect(habitrpg.user).to be_a(HabitClient::User)
     end
 
   end
