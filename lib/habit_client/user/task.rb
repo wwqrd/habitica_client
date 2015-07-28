@@ -17,11 +17,10 @@ class HabitClient::User
     include Type
 
     attr_accessor :id, :text, :notes, :value, :priority, :attribute,
-                  :type, :tags
-
-    attr_accessor :checklist, :value, :priority, :challenge, :down,
-                  :up, :history, :streak, :frequency, :history,
-                  :completed, :every_x, :repeat, :collapse_checklist
+                  :type, :tags, :checklist, :value, :priority,
+                  :challenge, :down, :up, :history, :streak,
+                  :frequency, :history, :completed, :every_x, :repeat,
+                  :collapse_checklist
 
     date_accessor :date_created, :date_completed, :start_date, :date
 
