@@ -72,7 +72,7 @@ describe 'Task', vcr: { cassette_name: 'task' } do
       let(:updated_text) { 'Testing 456' }
 
       it 'can update an existing task' do
-        tasks.create(text: original_text, type: 'todo')
+        task = tasks.create(text: original_text, type: 'todo')
 
         expect(task.text).to eq(original_text)
 
