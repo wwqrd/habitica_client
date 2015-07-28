@@ -1,10 +1,9 @@
 require 'ostruct'
 require 'forwardable'
 require 'time'
+require 'habit_client/restful'
 
 class HabitClient::User
-
-  require 'habit_client/restful'
 
   class Task < HabitClient::Restful
 

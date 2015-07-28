@@ -4,6 +4,7 @@ class HabitClient::User
 
     require 'habit_client/user/tasks/types'
     require 'habit_client/user/tasks/status'
+    require 'habit_client/user/task'
 
     include Enumerable
     include Types

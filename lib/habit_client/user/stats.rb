@@ -1,9 +1,8 @@
 require 'ostruct'
 require 'forwardable'
+require 'habit_client/api_base'
 
 class HabitClient::User
-
-  require 'habit_client/api_base'
 
   class Stats < HabitClient::ApiBase
 
