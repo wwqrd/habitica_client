@@ -70,9 +70,9 @@ describe 'Task', vcr: { cassette_name: 'task' } do
 
       let(:original_text) { 'Testing 123' }
       let(:updated_text) { 'Testing 456' }
-      let(:task) { tasks.create(text: original_text, type: 'todo') }
 
       it 'can update an existing task' do
+        tasks.create(text: original_text, type: 'todo')
 
         expect(task.text).to eq(original_text)
 
@@ -80,6 +80,19 @@ describe 'Task', vcr: { cassette_name: 'task' } do
         task.save
 
         expect(task.text).to eq(updated_text)
+      end
+
+    end
+
+  end
+
+  context 'Deleting tasks', vcr: { cassette_name: 'delete_task' } do
+
+    describe '#delete' do
+
+      it 'can delete a task' do
+        task = tasks.create(text: 'Delete me', type: 'todo')
+        expect(task.delete).to eq(true)
       end
 
     end

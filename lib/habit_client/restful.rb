@@ -45,6 +45,13 @@ class HabitClient
       self
     end
 
+    def delete
+      return nil if new?
+
+      response = client.class.delete("#{endpoint}/#{id}")
+      response.ok?
+    end
+
     private
 
     def post
