@@ -16,12 +16,14 @@ class HabitClient::User
       end
     end
 
-    def tasks
-      @tasks ||= client.class.get('/user/tasks')
-    end
-
     def create(attributes = {})
       Task.new(client, attributes).save
+    end
+
+    private
+
+    def tasks
+      @tasks ||= client.class.get('/user/tasks')
     end
 
   end

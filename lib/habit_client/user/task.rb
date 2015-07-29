@@ -1,6 +1,7 @@
 require 'ostruct'
 require 'forwardable'
 require 'time'
+require 'hashup'
 require 'habit_client/restful'
 
 class HabitClient::User
@@ -14,6 +15,7 @@ class HabitClient::User
     extend DateAccessor
     include Status
     include Type
+    extend Hashup
 
     attr_accessor :id, :text, :notes, :value, :priority, :attribute,
                   :type, :tags, :checklist, :value, :priority,
@@ -23,25 +25,15 @@ class HabitClient::User
 
     date_accessor :date_created, :date_completed, :start_date, :date
 
+    hashup :id, :text, :notes, :value, :priority, :attribute, :type,
+           :tags, :checklist, :value, :priority, :challenge, :down,
+           :up, :history, :streak, :frequency, :history, :completed,
+           :every_x, :repeat, :collapse_checklist
+
+    private
+
     def endpoint
       '/user/tasks'
-    end
-
-    def to_json
-      to_h.to_json
-    end
-
-    def to_h
-      properties = [:id, :text, :notes, :value, :priority, :attribute,
-                    :type, :tags, :checklist, :value, :priority,
-                    :challenge, :down, :up, :history, :streak,
-                    :frequency, :history, :completed, :every_x,
-                    :repeat, :collapse_checklist]
-
-      kv = properties.map { |k| [k, send("#{k}")] }
-           .delete_if { |_k, v| v.nil? }
-
-      Hash[kv]
     end
 
   end

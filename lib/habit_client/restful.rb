@@ -48,16 +48,22 @@ class HabitClient
     def delete
       return nil if new?
 
-      response = client.class.delete("#{endpoint}/#{id}")
+      response = client.class.delete(url)
       response.ok?
     end
 
     private
 
+    def url
+      return "#{endpoint}/#{id}" unless new?
+
+      endpoint
+    end
+
     def post
       return nil unless new?
 
-      response = client.class.post(endpoint,
+      response = client.class.post(url,
                                    body: to_json)
       response.parsed_response
     end
@@ -65,7 +71,7 @@ class HabitClient
     def put
       return nil if new?
 
-      response = client.class.put("#{endpoint}/#{id}",
+      response = client.class.put(url,
                                   body: to_json)
       response.parsed_response
     end

@@ -1,15 +1,9 @@
 require 'spec_helper'
 
-describe 'Stats' do
+describe 'Stats', vcr: { cassette_name: 'stats' } do
 
-  stats = nil
-
-  VCR.use_cassette :stats do
-    habitrpg = HabitClient.new(USER_ID, API_TOKEN)
-    stats = habitrpg.user.stats
-    # This is bad, we shouldn't know the internal workings of a class
-    stats.stats
-  end
+  let(:habitrpg) { HabitClient.new(USER_ID, API_TOKEN) }
+  let(:stats) { habitrpg.user.stats }
 
   let(:object_stats) { [:training, :buffs] }
   let(:numeric_stats) do
