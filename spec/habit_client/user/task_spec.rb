@@ -64,7 +64,20 @@ describe 'Task', vcr: { cassette_name: 'task' } do
     end
   end
 
-  context 'Writing to tasks', vcr: { cassette_name: 'write_task' } do
+  context 'Deleting tasks', vcr: { cassette_name: 'delete_task' } do
+
+    describe '#delete' do
+
+      it 'can delete a task' do
+        task = tasks.create(text: 'Delete me', type: 'todo')
+        expect(task.delete).to eq(true)
+      end
+
+    end
+
+  end
+
+  context 'Updating tasks', vcr: { cassette_name: 'update_task' } do
 
     describe '#save' do
 
@@ -80,19 +93,8 @@ describe 'Task', vcr: { cassette_name: 'task' } do
         task.save
 
         expect(task.text).to eq(updated_text)
-      end
 
-    end
-
-  end
-
-  context 'Deleting tasks', vcr: { cassette_name: 'delete_task' } do
-
-    describe '#delete' do
-
-      it 'can delete a task' do
-        task = tasks.create(text: 'Delete me', type: 'todo')
-        expect(task.delete).to eq(true)
+        task.delete  # Don't leave tasks in my todo list!
       end
 
     end
