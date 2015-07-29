@@ -2,6 +2,8 @@ class HabitClient
 
   class Restful < ApiBase
 
+    class ServerError < IOError; end
+
     module ClassMethods
 
       def parse(client, attributes)
@@ -49,7 +51,12 @@ class HabitClient
       return nil if new?
 
       response = client.class.delete(url)
+
       response.ok?
+    end
+
+    def to_json
+      to_h.to_json
     end
 
     private
@@ -65,6 +72,9 @@ class HabitClient
 
       response = client.class.post(url,
                                    body: to_json)
+
+      fail ServerError, "#{response['err']}" unless response.ok?
+
       response.parsed_response
     end
 
@@ -73,6 +83,9 @@ class HabitClient
 
       response = client.class.put(url,
                                   body: to_json)
+
+      fail ServerError, "#{response['err']}" unless response.ok?
+
       response.parsed_response
     end
 
