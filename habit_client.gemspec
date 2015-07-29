@@ -24,5 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry', '~> 0.10'
   spec.add_development_dependency 'rubocop', '~> 0.32'
   spec.add_development_dependency 'byebug', '~> 5.0'
+  spec.add_development_dependency 'yard', '~> 0.8'
+  spec.add_development_dependency 'redcarpet', '~> 3.3'
   spec.add_runtime_dependency 'httparty', '~> 0.13'
 end

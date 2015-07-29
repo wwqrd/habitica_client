@@ -6,6 +6,7 @@ require 'habit_client/restful'
 
 class HabitClient::User
 
+  # A user task, which can be a habit, daily, or todo.
   class Task < HabitClient::Restful
 
     require 'habit_client/user/task/date_accessor'

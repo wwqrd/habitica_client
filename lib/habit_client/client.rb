@@ -2,6 +2,11 @@ require 'httparty'
 require 'json'
 
 class HabitClient
+
+  # This wraps up httparty functionality in a habitrpg
+  # specific class.
+  #
+  # Not intented to be accessed directly.
   class Client
 
     include HTTParty
@@ -19,4 +24,5 @@ class HabitClient
     end
 
   end
+
 end

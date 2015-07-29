@@ -1,5 +1,8 @@
 class HabitClient::User
 
+  # An enumerable object of all the user's tasks.
+  #
+  # Also contains the endpoint for creating new tasks.
   class Tasks < HabitClient::ApiBase
 
     require 'habit_client/user/tasks/types'
@@ -10,12 +13,16 @@ class HabitClient::User
     include Types
     include Status
 
+    # Iterate over user tasks
     def each(&block)
       tasks.each do |task|
         block.call Task.parse(client, task)
       end
     end
 
+    # Create a new task (and save it to habitrpg.com)
+    #
+    # @param attributes [Hash] a hash of attributes for the new task.
     def create(attributes = {})
       Task.new(client, attributes).save
     end
