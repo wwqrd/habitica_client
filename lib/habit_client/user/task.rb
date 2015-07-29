@@ -29,7 +29,8 @@ class HabitClient::User
     hashup :id, :text, :notes, :value, :priority, :attribute, :type,
            :tags, :checklist, :value, :priority, :challenge, :down,
            :up, :history, :streak, :frequency, :history, :completed,
-           :every_x, :repeat, :collapse_checklist
+           :every_x, :repeat, :collapse_checklist, :date_created,
+           :date_completed, :start_date, :date
 
     private
 
