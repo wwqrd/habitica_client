@@ -1,3 +1,4 @@
+# rubocop:disable all
 require_relative '../lib/habit_client'
 
 require 'byebug'
