@@ -3,6 +3,8 @@ habit_client [![Build Status](https://travis-ci.org/steeeve/habit_client.svg?bra
 
 A HabitRPG client gem.
 
+Full documentation at [http://www.rubydoc.info/gems/habit_client/](http://www.rubydoc.info/gems/habit_client/)
+
 Installation
 ------------
 
