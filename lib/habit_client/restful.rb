@@ -67,10 +67,9 @@ class HabitClient
       endpoint
     end
 
-    def post
-      return nil unless new?
-
-      response = client.class.post(url,
+    def request(method)
+      response = client.class.send(method,
+                                   url,
                                    body: to_json)
 
       fail ServerError, "#{response['err']}" unless response.ok?
@@ -78,15 +77,16 @@ class HabitClient
       response.parsed_response
     end
 
+    def post
+      return nil unless new?
+
+      request(:post)
+    end
+
     def put
       return nil if new?
 
-      response = client.class.put(url,
-                                  body: to_json)
-
-      fail ServerError, "#{response['err']}" unless response.ok?
-
-      response.parsed_response
+      request(:put)
     end
 
   end
