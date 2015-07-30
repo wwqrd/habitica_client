@@ -7,7 +7,7 @@ date_properties = [:date_completed, :date_created]
 
 describe 'Task', vcr: { cassette_name: 'task' } do
 
-  let(:habitrpg) { HabitClient.new(USER_ID, API_TOKEN) }
+  let(:habitrpg) { HabiticaClient.new(USER_ID, API_TOKEN) }
   let(:tasks) { habitrpg.user.tasks }
   let(:todo) { tasks.todos.last }
   let(:habit) { tasks.habits.last }

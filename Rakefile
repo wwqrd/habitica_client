@@ -5,7 +5,7 @@ require 'rubocop/rake_task'
 RSpec::Core::RakeTask.new(:spec)
 RuboCop::RakeTask.new
 
-desc 'Open a PRY console with an instance of `HabitClient` from ENV vars'
+desc 'Open a PRY console with an instance of `HabiticaClient` from ENV vars'
 task :console do
 
   ruby 'utils/console.rb'

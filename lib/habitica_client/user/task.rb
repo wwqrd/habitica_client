@@ -2,16 +2,16 @@ require 'ostruct'
 require 'forwardable'
 require 'time'
 require 'hashup'
-require 'habit_client/restful'
+require 'habitica_client/restful'
 
-class HabitClient::User
+class HabiticaClient::User
 
   # A user task, which can be a habit, daily, or todo.
-  class Task < HabitClient::Restful
+  class Task < HabiticaClient::Restful
 
-    require 'habit_client/user/task/date_accessor'
-    require 'habit_client/user/task/status'
-    require 'habit_client/user/task/type'
+    require 'habitica_client/user/task/date_accessor'
+    require 'habitica_client/user/task/status'
+    require 'habitica_client/user/task/type'
 
     extend DateAccessor
     include Status

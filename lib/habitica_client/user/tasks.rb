@@ -1,13 +1,13 @@
-class HabitClient::User
+class HabiticaClient::User
 
   # An enumerable object of all the user's tasks.
   #
   # Also contains the endpoint for creating new tasks.
-  class Tasks < HabitClient::ApiBase
+  class Tasks < HabiticaClient::ApiBase
 
-    require 'habit_client/user/tasks/types'
-    require 'habit_client/user/tasks/status'
-    require 'habit_client/user/task'
+    require 'habitica_client/user/tasks/types'
+    require 'habitica_client/user/tasks/status'
+    require 'habitica_client/user/task'
 
     include Enumerable
     include Types

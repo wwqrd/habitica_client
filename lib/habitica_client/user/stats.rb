@@ -2,9 +2,9 @@ require 'ostruct'
 require 'forwardable'
 require 'hashup'
 
-class HabitClient::User
+class HabiticaClient::User
 
-  class Stats < HabitClient::ApiBase
+  class Stats < HabiticaClient::ApiBase
 
     extend Forwardable
     extend Hashup

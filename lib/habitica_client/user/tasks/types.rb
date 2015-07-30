@@ -1,4 +1,4 @@
-class HabitClient::User::Tasks
+class HabiticaClient::User::Tasks
 
   module Types
 

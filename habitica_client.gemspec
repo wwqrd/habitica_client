@@ -1,14 +1,14 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'habit_client/version'
+require 'habitica_client/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'habit_client'
-  spec.version       = HabitClient::VERSION
+  spec.name          = 'habitica_client'
+  spec.version       = HabiticaClient::VERSION
   spec.authors       = ['Stephen Mckellar']
   spec.email         = ['stephen@thingmaker.io']
-  spec.summary       = 'Another HabitRPG client'
+  spec.summary       = 'Another Habitica client'
   # spec.description  = %q{}
   spec.homepage      = ''
   spec.license       = 'MIT'

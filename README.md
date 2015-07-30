@@ -1,9 +1,9 @@
-habit_client [![Build Status](https://travis-ci.org/steeeve/habit_client.svg?branch=master)](https://travis-ci.org/steeeve/habit_client) [![Code Climate](https://codeclimate.com/github/steeeve/habit_client/badges/gpa.svg)](https://codeclimate.com/github/steeeve/habit_client)
-============
+HabiticaClient [![Build Status](https://travis-ci.org/steeeve/habitica_client.svg?branch=master)](https://travis-ci.org/steeeve/habitica_client) [![Code Climate](https://codeclimate.com/github/steeeve/habitica_client/badges/gpa.svg)](https://codeclimate.com/github/steeeve/habitica_client)
+==============
 
-A HabitRPG client gem.
+A Habitica client gem.
 
-Full documentation at [http://www.rubydoc.info/gems/habit_client/](http://www.rubydoc.info/gems/habit_client/)
+Full documentation at [http://www.rubydoc.info/gems/habitica_client/](http://www.rubydoc.info/gems/habitica_client/)
 
 Installation
 ------------
@@ -11,7 +11,7 @@ Installation
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'habit_client'
+gem 'habitica_client'
 ```
 
 And then execute:
@@ -20,15 +20,15 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install habit_client
+    $ gem install habitica_client
 
 Usage
 -----
 
 ```ruby
-require 'habit_client'
+require 'habitica_client'
 
-habit = HabitClient.new(ENV['USER_ID'], ENV['API_TOKEN'])
+habit = HabiticaClient.new(ENV['USER_ID'], ENV['API_TOKEN'])
 
 # User stats
 habit.user.stats.hp
@@ -52,7 +52,7 @@ task.save
 
 ### Stats
 ```ruby
-stats = habit_client.user.stats
+stats = habitica_client.user.stats
 
 puts stats.training
 puts stats.buffs
@@ -74,7 +74,7 @@ puts stats.player_class
 
 ### Task
 ```ruby
-stats = habit_client.user.tasks
+stats = habitica_client.user.tasks
 
 tasks.each do |task|
     puts task.daily?

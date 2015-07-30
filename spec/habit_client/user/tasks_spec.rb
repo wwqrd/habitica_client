@@ -2,14 +2,14 @@ require 'spec_helper'
 
 describe 'Tasks', vcr: { cassette_name: 'tasks' } do
 
-  let(:habitrpg) { HabitClient.new(USER_ID, API_TOKEN) }
+  let(:habitrpg) { HabiticaClient.new(USER_ID, API_TOKEN) }
   let(:tasks) { habitrpg.user.tasks }
 
   describe '.each' do
 
     it 'can be iterated' do
       tasks.each do |task|
-        expect(task).to be_a(HabitClient::User::Task)
+        expect(task).to be_a(HabiticaClient::User::Task)
       end
     end
 

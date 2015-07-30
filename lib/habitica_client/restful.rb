@@ -1,6 +1,6 @@
 require 'json'
 
-class HabitClient
+class HabiticaClient
 
   class Restful < ApiBase
 

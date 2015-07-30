@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'Stats', vcr: { cassette_name: 'stats' } do
 
-  let(:habitrpg) { HabitClient.new(USER_ID, API_TOKEN) }
+  let(:habitrpg) { HabiticaClient.new(USER_ID, API_TOKEN) }
   let(:stats) { habitrpg.user.stats }
 
   let(:object_stats) { [:training, :buffs] }

@@ -1,7 +1,7 @@
 require 'httparty'
 require 'json'
 
-class HabitClient
+class HabiticaClient
 
   # This wraps up httparty functionality in a habitrpg
   # specific class.

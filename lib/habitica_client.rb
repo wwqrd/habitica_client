@@ -1,8 +1,8 @@
-class HabitClient
+class HabiticaClient
 
-  require 'habit_client/version'
-  require 'habit_client/client'
-  require 'habit_client/user'
+  require 'habitica_client/version'
+  require 'habitica_client/client'
+  require 'habitica_client/user'
 
   attr_accessor :client
 

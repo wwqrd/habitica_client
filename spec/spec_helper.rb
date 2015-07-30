@@ -1,4 +1,4 @@
-require_relative '../lib/habit_client'
+require_relative '../lib/habitica_client'
 
 require 'byebug'
 require 'vcr'

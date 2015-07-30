@@ -1,19 +1,19 @@
 require 'spec_helper'
 
-describe 'HabitClient' do
+describe 'HabiticaClient' do
 
-  let(:habitrpg) { HabitClient.new(USER_ID, API_TOKEN) }
+  let(:habitrpg) { HabiticaClient.new(USER_ID, API_TOKEN) }
 
   it 'can be initialized' do
 
-    expect(habitrpg).to be_a(HabitClient)
+    expect(habitrpg).to be_a(HabiticaClient)
 
   end
 
   describe '#user' do
 
     it 'returns a user' do
-      expect(habitrpg.user).to be_a(HabitClient::User)
+      expect(habitrpg.user).to be_a(HabiticaClient::User)
     end
 
   end
