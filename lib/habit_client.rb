@@ -1,3 +1,5 @@
+warn "[DEPRECATION] This gem has been renamed to 'habitica_client' and will no longer be supported. Please switch to 'habitica_client' as soon as possible."
+
 class HabitClient
 
   require 'habit_client/version'

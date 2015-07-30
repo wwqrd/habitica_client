@@ -27,4 +27,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'yard', '~> 0.8'
   spec.add_development_dependency 'redcarpet', '~> 3.3'
   spec.add_runtime_dependency 'httparty', '~> 0.13'
+  spec.post_install_message = <<-MESSAGE
+!    The 'habit_client' gem has been deprecated and has been replaced by 'habitica_client'.
+!    See: https://rubygems.org/gems/habitica_client
+!    And: https://github.com/steeeve/habitica_client
+MESSAGE
 end
