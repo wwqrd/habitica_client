@@ -4,10 +4,17 @@ require 'hashup'
 
 class HabiticaClient::User
 
-  class Stats < HabiticaClient::ApiBase
+  module StatsProperty
+    def stats
+      @stats ||= Stats.new(data['stats'])
+    end
+  end
 
+  class Stats
     extend Forwardable
     extend Hashup
+
+    attr_reader :stats
 
     def_delegators :stats, :training, :buffs, :per, :int, :con, :str,
                    :points, :lvl, :gp, :exp, :mp, :hp, :player_class
@@ -20,16 +27,9 @@ class HabiticaClient::User
            :gp, :exp, :mp, :hp, :player_class, :to_next_level,
            :max_health, :max_mp
 
-    def self.parse(stats)
-      stats.tap do |s|
-        s['player_class'] = s['class']
-      end
-    end
-
-    private
-
-    def stats
-      @stats ||= OpenStruct.new(Stats.parse(client.class.get('/user')['stats']))
+    def initialize(api_data)
+      api_data['player_class'] = api_data['class'] # 'class' is reserved
+      @stats = OpenStruct.new(api_data)
     end
 
   end

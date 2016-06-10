@@ -1,4 +1,4 @@
-class HabiticaClient::User::Task
+class HabiticaClient::Task
 
   module Status
 

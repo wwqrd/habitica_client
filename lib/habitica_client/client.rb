@@ -11,7 +11,7 @@ class HabiticaClient
 
     include HTTParty
 
-    base_uri 'https://habitrpg.com:443/api/v2/'
+    base_uri 'https://habitrpg.com:443/api/v3/'
 
     def initialize(user_id, api_token)
       @user_id = user_id

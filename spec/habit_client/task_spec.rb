@@ -3,15 +3,30 @@ require 'spec_helper'
 properties = [:id, :text, :notes, :value, :checklist, :priority,
               :attribute, :tags]
 
-date_properties = [:date_completed, :date_created]
+date_properties = [:created_at, :updated_at]
 
 describe 'Task', vcr: { cassette_name: 'task' } do
 
   let(:habitrpg) { HabiticaClient.new(USER_ID, API_TOKEN) }
-  let(:tasks) { habitrpg.user.tasks }
+  let(:tasks) { habitrpg.tasks }
   let(:todo) { tasks.todos.last }
   let(:habit) { tasks.habits.last }
   let(:daily) { tasks.dailies.last }
+  dummy_tasks = nil
+
+  before do
+    dummy_tasks = {
+      todo: tasks.create(text: 'Testing 123', type: 'todo'),
+      habit: tasks.create(text: 'Testing 123', type: 'habit'),
+      daily: tasks.create(text: 'Testing 123', type: 'daily')
+    }
+  end
+
+  after do
+    # Don't leave tasks in my todo list!
+    dummy_tasks.each { |_k, t| t.delete }
+
+  end
 
   describe '#completed?' do
     it 'is the completed status' do

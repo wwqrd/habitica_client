@@ -3,6 +3,7 @@ class HabiticaClient
   require 'habitica_client/version'
   require 'habitica_client/client'
   require 'habitica_client/user'
+  require 'habitica_client/tasks'
 
   attr_accessor :client
 
@@ -12,6 +13,10 @@ class HabiticaClient
 
   def user
     @user ||= User.new(client)
+  end
+
+  def tasks
+    @tasks ||= Tasks.new(client)
   end
 
 end
