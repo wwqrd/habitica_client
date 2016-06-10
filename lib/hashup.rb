@@ -4,7 +4,7 @@ module Hashup
     define_method(:to_h) do
 
       kv = attributes.map { |k| [k, send(k)] }
-           .delete_if { |_k, v| v.nil? }
+                     .delete_if { |_k, v| v.nil? }
 
       Hash[kv]
 

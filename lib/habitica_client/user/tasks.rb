@@ -14,9 +14,9 @@ class HabiticaClient::User
     include Status
 
     # Iterate over user tasks
-    def each(&block)
+    def each
       tasks.each do |task|
-        block.call Task.parse(client, task)
+        yield Task.parse(client, task)
       end
     end
 

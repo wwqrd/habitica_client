@@ -18,7 +18,7 @@ class HabiticaClient
       @api_token = api_token
 
       self.class.headers('User-Agent' => 'habitapi-rpg',
-                         'Content-Type'  => 'application/json',
+                         'Content-Type' => 'application/json',
                          'x-api-key' => @api_token,
                          'x-api-user' => @user_id)
     end

@@ -72,7 +72,7 @@ describe 'Tasks', vcr: { cassette_name: 'tasks' } do
       it 'can create a new task' do
         task = tasks.create(text: 'Testing 123', type: 'todo')
         expect(task.id).not_to be_nil
-        task.delete  # Don't leave tasks in my todo list!
+        task.delete # Don't leave tasks in my todo list!
       end
 
     end

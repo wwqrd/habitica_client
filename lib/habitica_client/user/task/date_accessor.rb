@@ -1,3 +1,5 @@
+# rubocop:disable Style/UnneededInterpolation
+
 class HabiticaClient::User::Task
 
   module DateAccessor

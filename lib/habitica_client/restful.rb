@@ -74,7 +74,7 @@ class HabiticaClient
                                    url,
                                    body: to_json)
 
-      fail ServerError, "#{response['err']}" unless response.ok?
+      raise ServerError, response['err'] unless response.ok?
 
       response.parsed_response
     end

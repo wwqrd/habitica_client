@@ -94,7 +94,7 @@ describe 'Task', vcr: { cassette_name: 'task' } do
 
         expect(task.text).to eq(updated_text)
 
-        task.delete  # Don't leave tasks in my todo list!
+        task.delete # Don't leave tasks in my todo list!
       end
 
     end
