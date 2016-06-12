@@ -74,9 +74,11 @@ class HabiticaClient
                                    url,
                                    body: to_json)
 
-      raise ServerError, response['err'] unless response.ok?
+      unless response.response.code =~ /2\d{2}/
+        raise ServerError, response['err']
+      end
 
-      response.parsed_response
+      response.parsed_response['data']
     end
 
     def post

@@ -1,5 +1,6 @@
 require_relative '../lib/habitica_client'
 
+require 'awesome_print'
 require 'byebug'
 require 'vcr'
 require 'dotenv'

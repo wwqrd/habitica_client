@@ -9,24 +9,4 @@ describe 'User', :vcr do
     expect(user).to be_a(HabiticaClient::User)
   end
 
-  describe '#stats' do
-
-    subject { user.stats }
-
-    it 'returns Stats' do
-      expect(subject).to be_a(HabiticaClient::User::Stats)
-    end
-
-  end
-
-  describe '#tasks' do
-
-    subject { user.tasks }
-
-    it 'returns Tasks' do
-      expect(subject).to be_a(HabiticaClient::User::Tasks)
-    end
-
-  end
-
 end
