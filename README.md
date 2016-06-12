@@ -35,12 +35,12 @@ habit.user.stats.hp
 # 50
 
 # Get tasks
-habit.user.tasks.each do |task|
+habit.tasks.each do |task|
   puts task.text
 end
 
 # Create task
-task = habit.user.tasks.create(
+task = habit.tasks.create(
   text: 'Do the dishes',
   type: 'todo'
 )
@@ -74,7 +74,7 @@ puts stats.player_class
 
 ### Task
 ```ruby
-stats = habitica_client.user.tasks
+stats = habitica_client.tasks
 
 tasks.each do |task|
     puts task.daily?
