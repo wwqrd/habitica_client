@@ -1,4 +1,4 @@
-HabiticaClient [![Build Status](https://travis-ci.org/steeeve/habitica_client.svg?branch=master)](https://travis-ci.org/steeeve/habitica_client) [![Code Climate](https://codeclimate.com/github/steeeve/habitica_client/badges/gpa.svg)](https://codeclimate.com/github/steeeve/habitica_client)
+HabiticaClient [![Build Status](https://travis-ci.org/wwqrd/habitica_client.svg?branch=master)](https://travis-ci.org/wwqrd/habitica_client) [![Code Climate](https://codeclimate.com/github/wwqrd/habitica_client/badges/gpa.svg)](https://codeclimate.com/github/wwqrd/habitica_client)
 ==============
 
 A Habitica client gem.
